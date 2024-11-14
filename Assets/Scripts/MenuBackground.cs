@@ -15,7 +15,6 @@ public class MenuBackground : MonoBehaviour
     void Update()
     {
         movingLayer.transform.Translate(Vector3.right * direction * speed * Time.deltaTime);
-        Debug.Log(movingLayer.transform.localPosition.x);
         if(movingLayer.transform.localPosition.x >= rightBorderX)
         {
             direction = -1;

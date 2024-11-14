@@ -12,10 +12,12 @@ public class Gun : MonoBehaviour
     [SerializeField] private float range;
     [SerializeField] private float impactForce;
     [SerializeField] private float shootDelay;
-    [SerializeField] private LayerMask hitLayers;
+    [SerializeField] private LayerMask hitLayer;
+    [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private GameObject bulletHolePrefab;
     [SerializeField] private GameObject shootEffect;
-    [Header("Ammo Settings")]
+    [Header("Gun&Ammo Settings")]
+    [SerializeField] private float gunDamage;
     [SerializeField] private float reloadTime;
     [SerializeField] private int currentAmmo;
     [SerializeField] private int maxClipAmmo;
@@ -55,7 +57,6 @@ public class Gun : MonoBehaviour
 
         if(isShooting)
         {
-            Debug.Log("test shoot" + "canshoot: " + canShoot + "reloading: " + reloading);
             if(canShoot && !reloading)
             {
                 Shoot();
@@ -73,12 +74,14 @@ public class Gun : MonoBehaviour
             shootEffect.GetComponent<ParticleSystem>().Play();
             animator.SetTrigger("Shoot");
             audioSource.Play(gunShoot);
-
+ 
             Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, range, hitLayers))
+
+            //FIZYKA I BULLETHOLE
+            if(Physics.Raycast(ray, out hit, range, hitLayer))
             {
-                if(bulletHolePrefab != null)
+                if (bulletHolePrefab != null)
                 {
                     GameObject bulletHole = Instantiate(bulletHolePrefab, hit.point + hit.normal * 0.01f, Quaternion.LookRotation(-hit.normal));
                     bulletHole.transform.SetParent(hit.transform);
@@ -90,7 +93,26 @@ public class Gun : MonoBehaviour
                 {
                     rb.AddForceAtPosition(ray.direction * impactForce, hit.point, ForceMode.Impulse);
                 }
+
+                Enemy enemy = hit.collider.GetComponent<Enemy>();
+                if(enemy != null)
+                {
+                    enemy.RemoveHealth(gunDamage);
+                    Debug.Log("HIT!");
+                }
             }
+
+            //ENEMY
+            if(Physics.Raycast(ray, out hit, range, enemyLayer))
+            {
+                Enemy enemy = hit.collider.GetComponent<Enemy>();
+                if(enemy != null)
+                {
+                    enemy.RemoveHealth(gunDamage);
+                }
+            }
+
+
             StartCoroutine(ShootDelay());
         }
         else if(currentAmmo == 0 && maxAmmo > 0)

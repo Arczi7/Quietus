@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject settings;
+
     public void StartGame()
     {
         SceneManager.LoadScene("Scene01");
