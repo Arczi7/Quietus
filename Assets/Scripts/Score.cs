@@ -5,11 +5,16 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Score", menuName = "Score/Score")]
 public class Score : ScriptableObject
 {
-    private float score;
-    private float level = 1;
+    [SerializeField] private float score;
+    [SerializeField] private float level = 1;
     public void AddScore(float value)
     {
         score += value;
+    }
+
+    public void ZeroScore()
+    {
+        score = 0;
     }
 
     public void SetLevel(float value)
