@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [Header("UI - Ammunition")]
-    [SerializeField] private Text ammoText;
+    [SerializeField] private Text currentAmmoText;
+    [SerializeField] private Text maxAmmoText;
     [SerializeField] private Image ammoSprite;
     [Header("UI - Health & Score")]
     [SerializeField] private PlayerStats playerStats;
@@ -24,13 +25,14 @@ public class UIManager : MonoBehaviour
 
     private void UIAmmo()
     {
-        ammoText.text = activeGun.GetCurrentAmmo().ToString() + "/" + activeGun.GetMaxAmmo().ToString();
+        currentAmmoText.text = activeGun.GetCurrentAmmo().ToString();
+        maxAmmoText.text = activeGun.GetMaxAmmo().ToString();
         ammoSprite.sprite = activeGun.GetAmmoSprite();
     }
 
     private void UIHealth()
     {
-        healthText.text = playerStats.GetHealth().ToString() + "/" + playerStats.GetMaxHealth().ToString();
+        healthText.text = playerStats.GetHealth().ToString();
     }
 
     private void UIScore()
