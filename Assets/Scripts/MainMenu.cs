@@ -12,14 +12,9 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Scene01");
     }
 
-    public void ShowSettings()
+    public void ToggleSettings(bool toggle)
     {
-        settings.SetActive(true);
-    }
-
-    public void CloseSettings()
-    {
-        settings.SetActive(false);
+        settings.SetActive(toggle);
     }
 
     public void ExitGame()

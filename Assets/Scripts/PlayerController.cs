@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
     private readonly float speed = 10f;
-    private readonly float jumpHeight = 1f;
+    private readonly float jumpHeight = 0.5f;
     private readonly float gravity = -9.81f * 2;
     
     void Start()

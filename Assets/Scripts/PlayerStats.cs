@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] private float health;
-    [SerializeField] private float maxHealth;
+    [SerializeField] private int health;
+    [SerializeField] private int maxHealth;
     [SerializeField] private Score score;
     void Update()
     {
@@ -17,7 +17,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void HealPlayer(float heal)
+    public void HealPlayer(int heal)
     {
         health += heal;
         if(health > maxHealth)
@@ -26,7 +26,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    public void DamagePlayer(float damage)
+    public void DamagePlayer(int damage)
     {
         Debug.Log(health);
         health -= damage;
@@ -37,24 +37,24 @@ public class PlayerStats : MonoBehaviour
         score.AddScore(value);
     }
 
-    public void SetLevel(float value)
+    public void AddLevel()
     {
-        score.SetLevel(value);
+        score.AddLevel();
     }
 
-    //GETTERY
+    //--GETTERY--//
     public float GetHealth()
     {
         return health;
     }
 
-    public float GetMaxHealth()
-    {
-        return maxHealth;
-    }
-
     public float GetScore()
     {
         return score.GetScore();
+    }
+
+    public float GetLevel()
+    {
+        return score.GetLevel();
     }
 }

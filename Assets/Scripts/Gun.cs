@@ -16,7 +16,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private GameObject bulletHolePrefab;
     [SerializeField] private GameObject shootEffect;
     [Header("Gun&Ammo Settings")]
-    [SerializeField] private float gunDamage;
+    [SerializeField] private int gunDamage;
     [SerializeField] private float reloadTime;
     [SerializeField] private int currentAmmo;
     [SerializeField] private int maxClipAmmo;
@@ -92,13 +92,6 @@ public class Gun : MonoBehaviour
                 {
                     rb.AddForceAtPosition(ray.direction * impactForce, hit.point, ForceMode.Impulse);
                 }
-
-                Enemy enemy = hit.collider.GetComponent<Enemy>();
-                if(enemy != null)
-                {
-                    enemy.RemoveHealth(gunDamage);
-                    Debug.Log("HIT!");
-                }
             }
 
             //ENEMY
@@ -110,7 +103,6 @@ public class Gun : MonoBehaviour
                     enemy.RemoveHealth(gunDamage);
                 }
             }
-
 
             StartCoroutine(ShootDelay());
         }
@@ -154,7 +146,12 @@ public class Gun : MonoBehaviour
         canShoot = true;
     }
 
-    //GETTERY I SETTERY
+    public void AddAmmo(int value)
+    {
+        maxAmmo += value;
+    }
+
+    //GETTERY
     public int GetCurrentAmmo()
     {
         return currentAmmo;

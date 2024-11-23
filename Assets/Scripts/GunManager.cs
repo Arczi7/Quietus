@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class GunManager : MonoBehaviour
@@ -29,5 +30,15 @@ public class GunManager : MonoBehaviour
             rifle.SetActive(true);
             UIManager.SetGun(rifle);
         }
+    }
+
+    public GameObject Pistol
+    {
+        get => pistol;
+    }
+
+    public GameObject Rifle
+    {
+        get => rifle;
     }
 }

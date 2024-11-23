@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Text healthText;
     [SerializeField] private Text scoreText;
+    [Header("Texts")]
+    [SerializeField] private Text newLevelText;
     private Gun activeGun;
     void Update()
     {
@@ -40,8 +42,21 @@ public class UIManager : MonoBehaviour
         scoreText.text = playerStats.GetScore().ToString();
     }
 
+    private IEnumerator LevelText()
+    {
+        newLevelText.text = "LEVEL " + playerStats.GetLevel().ToString();
+        newLevelText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        newLevelText.gameObject.SetActive(false);
+    }
+
     public void SetGun(GameObject gun)
     {
         activeGun = gun.GetComponent<Gun>();
+    }
+
+    public void ShowLevelText()
+    {
+        StartCoroutine(LevelText());
     }
 }

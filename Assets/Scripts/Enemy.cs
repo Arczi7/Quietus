@@ -7,8 +7,8 @@ public class Enemy : MonoBehaviour
 {
     
     [Header("Enemy Stats")]
-    [SerializeField] private float health;
-    [SerializeField] private float damage;
+    [SerializeField] private int health;
+    [SerializeField] private int damage;
     [SerializeField] private float speed;
     [SerializeField] private float scoreValue;
     [Header("Other Settings")]
@@ -47,12 +47,13 @@ public class Enemy : MonoBehaviour
 
         if(health <= 0)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
             FindObjectOfType<PlayerStats>().AddScore(scoreValue);
+            FindObjectOfType<GameManager>().RemoveEnemy();
         }
     }
 
-    public void RemoveHealth(float damage)
+    public void RemoveHealth(int damage)
     {
         health -= damage;
     }
