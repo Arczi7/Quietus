@@ -39,29 +39,32 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
-        if(gunShootingType == ShootingType.single)
+        if(!FindAnyObjectByType<PauseMenu>().Pause)
         {
-            isShooting = Input.GetKeyDown(KeyCode.Mouse0);
-        }
-        else if(gunShootingType == ShootingType.auto)
-        {
-            isShooting = Input.GetKey(KeyCode.Mouse0);
-        }
-        
-        if(Input.GetKeyDown(KeyCode.R) && !reloading && maxAmmo > 0)
-        {
-            StartCoroutine(Reload());
-        }
-
-        if(isShooting)
-        {
-            if(canShoot && !reloading)
+            if(gunShootingType == ShootingType.single)
             {
-                Shoot();
+                isShooting = Input.GetKeyDown(KeyCode.Mouse0);
             }
-        }
+            else if(gunShootingType == ShootingType.auto)
+            {
+                isShooting = Input.GetKey(KeyCode.Mouse0);
+            }
+            
+            if(Input.GetKeyDown(KeyCode.R) && !reloading && maxAmmo > 0)
+            {
+                StartCoroutine(Reload());
+            }
 
-        ShowWhereCanShoot();
+            if(isShooting)
+            {
+                if(canShoot && !reloading)
+                {
+                    Shoot();
+                }
+            }
+
+            ShowWhereCanShoot();
+        }
     }
 
     private void ShowWhereCanShoot()

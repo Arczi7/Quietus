@@ -1,33 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenu : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-    [Header("Settings Panel")]
-    [SerializeField] private GameObject settings;
+    [Header("Pause Menu Panels")]
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject settingsPanel;
+    [Header("Settings - Volume Sliders")]
     [SerializeField] private Slider backgroundMusicVolume;
     [SerializeField] private Slider effectsVolume;
     [SerializeField] private Slider playerEffectsVolume;
-    [Header("Credtis Panel")]
-    [SerializeField] private GameObject credits;
+
+    private bool pause = false;
     private bool settingsOpen = false;
 
-    void Start()
+    void Update()
     {
-        AudioManager.Instance.BackgroundMusicManager(SceneManager.GetActiveScene().name);
+        if(Input.GetKeyDown(KeyCode.Escape) && !pause)
+        {
+            Debug.Log("Pause");
+            PauseGame();
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && pause)
+        {
+            ResumeGame();
+        }
     }
 
-    public void StartGame()
+    public void PauseGame()
     {
-        SceneManager.LoadScene("Scene01");
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.Confined;
+        pause = true;
+        AudioManager.Instance.PauseMusic();
+        ToggleSettings(false);
+        pauseMenu.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        pause = false;
+        AudioManager.Instance.ResumeMusic();
+        pauseMenu.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
     }
 
     public void ToggleSettings(bool toggle)
     {
-        settings.SetActive(toggle);
+        settingsPanel.SetActive(toggle);
         backgroundMusicVolume.value = AudioManager.Instance.MusicVolume;
         effectsVolume.value = AudioManager.Instance.EffectsVolume;
         playerEffectsVolume.value = AudioManager.Instance.PlayerEffectsVolume;
@@ -58,13 +83,15 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void ToggleCredits(bool toggle)
+    public void ToMenu()
     {
-        credits.SetActive(toggle);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("SceneMenu");
     }
 
-    public void ExitGame()
+    public bool Pause
     {
-        Application.Quit();
+        get => pause;
     }
+
 }

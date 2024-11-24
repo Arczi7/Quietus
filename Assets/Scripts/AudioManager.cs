@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +13,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float musicVolume = 0.1f;
     [SerializeField] private AudioSource effectsSound;
     [Range(0f, 1f)]
-    [SerializeField] private float effectsVolume = 0.4f;
+    [SerializeField] private float effectsVolume = 0.5f;
     [SerializeField] private AudioSource playerEffectsSound;
     [Range(0f, 1f)]
-    [SerializeField] private float playerEffectsVolume = 0.4f;
+    [SerializeField] private float playerEffectsVolume = 0.5f;
     [Header("Music and Effects")]
     [SerializeField] private AudioClip menuMusic;
     [SerializeField] private List<AudioClip> gameBackgroundMusicList;
@@ -39,13 +40,6 @@ public class AudioManager : MonoBehaviour
         UpdateVolumes();
     }
 
-    private void UpdateVolumes()
-    {
-        backgroundMusic.volume = musicVolume;
-        effectsSound.volume = effectsVolume;
-        playerEffectsSound.volume = playerEffectsVolume;
-    }
-
     private void PlayMenuMusic()
     {
         backgroundMusic.clip = menuMusic;
@@ -64,6 +58,13 @@ public class AudioManager : MonoBehaviour
         {
             backgroundMusicIndex = 0;
         }
+    }
+
+    public void UpdateVolumes()
+    {
+        backgroundMusic.volume = musicVolume;
+        effectsSound.volume = effectsVolume;
+        playerEffectsSound.volume = playerEffectsVolume;
     }
 
     public void BackgroundMusicManager(string sceneName)
@@ -93,6 +94,35 @@ public class AudioManager : MonoBehaviour
     public void StopMusic()
     {
         backgroundMusic.Stop();
+    }
+
+    public void PauseMusic()
+    {
+        backgroundMusic.Pause();
+    }
+
+    public void ResumeMusic()
+    {
+        backgroundMusic.Play();
+    }
+
+
+    public float MusicVolume
+    {
+        get => musicVolume;
+        set => musicVolume = Mathf.Clamp(value, 0f, 1f);
+    }
+
+    public float EffectsVolume
+    {
+        get => effectsVolume;
+        set => effectsVolume = Mathf.Clamp(value, 0f, 1f);
+    }
+
+    public float PlayerEffectsVolume
+    {
+        get => playerEffectsVolume;
+        set => playerEffectsVolume = Mathf.Clamp(value, 0f, 1f);
     }
 
 }
