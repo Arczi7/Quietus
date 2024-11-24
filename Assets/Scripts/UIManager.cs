@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Text healthText;
     [SerializeField] private Text scoreText;
+    [Header("Crosshair")]
+    [SerializeField] private Image crosshairBorder;
     [Header("Texts")]
     [SerializeField] private Text newLevelText;
     private Gun activeGun;
@@ -58,5 +60,10 @@ public class UIManager : MonoBehaviour
     public void ShowLevelText()
     {
         StartCoroutine(LevelText());
+    }
+
+    public Image GetCrosshairBorder()
+    {
+        return crosshairBorder;
     }
 }

@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         animator = GetComponent<Animator>();
         agent.speed = speed;
-        agent.stoppingDistance = 2f;
+        agent.stoppingDistance = 3f;
     }
 
     

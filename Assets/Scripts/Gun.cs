@@ -7,7 +7,6 @@ public class Gun : MonoBehaviour
 {
     [Header("General Settings")]
     [SerializeField] private Camera playerCamera;
-    [SerializeField] private AudioManager audioSource;
     [SerializeField] private float range;
     [SerializeField] private float impactForce;
     [SerializeField] private float shootDelay;
@@ -61,6 +60,21 @@ public class Gun : MonoBehaviour
                 Shoot();
             }
         }
+
+        ShowWhereCanShoot();
+    }
+
+    private void ShowWhereCanShoot()
+    {
+        Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        if(Physics.Raycast(ray, range, hitLayer + enemyLayer))
+        {
+            FindAnyObjectByType<UIManager>().GetCrosshairBorder().color = Color.green;
+        }
+        else
+        {
+            FindAnyObjectByType<UIManager>().GetCrosshairBorder().color = Color.red;
+        }
     }
 
     private void Shoot()
@@ -72,8 +86,8 @@ public class Gun : MonoBehaviour
 
             shootEffect.GetComponent<ParticleSystem>().Play();
             animator.SetTrigger("Shoot");
-            audioSource.Play(gunShoot);
- 
+            AudioManager.Instance.PlayEffect(gunShoot);
+
             Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
             RaycastHit hit;
 
@@ -114,7 +128,7 @@ public class Gun : MonoBehaviour
         else if(currentAmmo == 0 && maxAmmo == 0)
         {
             canShoot = true;
-            audioSource.Play(gunNoAmmo);
+            AudioManager.Instance.PlayEffect(gunNoAmmo);
         }
     }
 
@@ -128,7 +142,7 @@ public class Gun : MonoBehaviour
     {
         canShoot = false;
         reloading = true;
-        audioSource.Play(gunReload);
+        AudioManager.Instance.PlayEffect(gunReload);
         animator.SetTrigger("Reload");
         yield return new WaitForSeconds(reloadTime);
         int neededAmmo = maxClipAmmo - currentAmmo;

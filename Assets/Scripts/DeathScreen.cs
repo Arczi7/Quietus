@@ -13,6 +13,7 @@ public class DeathScreen : MonoBehaviour
     [SerializeField] private Text deathFinalScore;
     void Start()
     {
+        AudioManager.Instance.StopMusic();
         UIFinalScore();
     }
 

@@ -7,6 +7,11 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject settings;
 
+    void Start()
+    {
+        AudioManager.Instance.BackgroundMusicManager(SceneManager.GetActiveScene().name);
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene("Scene01");

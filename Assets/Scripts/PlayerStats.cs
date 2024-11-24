@@ -5,13 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
+    [Header("Player Stats")]
     [SerializeField] private int health;
     [SerializeField] private int maxHealth;
     [SerializeField] private Score score;
+    [Header("Player Sounds")]
+    [SerializeField] private AudioClip playerHurt;
+    [SerializeField] private AudioClip playerGameOver;
     void Update()
     {
         if(health <= 0)
         {
+            AudioManager.Instance.PlayPlayerEffect(playerGameOver);
             Cursor.lockState = CursorLockMode.Confined;
             SceneManager.LoadScene("SceneDeath");
         }
@@ -28,7 +33,7 @@ public class PlayerStats : MonoBehaviour
 
     public void DamagePlayer(int damage)
     {
-        Debug.Log(health);
+        AudioManager.Instance.PlayPlayerEffect(playerHurt);
         health -= damage;
     }
 

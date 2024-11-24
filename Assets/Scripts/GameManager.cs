@@ -1,25 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [Header("General Settings")]
-    [SerializeField] private NavMeshSurface surface;
     [SerializeField] private Score score;
     [SerializeField] private GameObject enemy;
-    [SerializeField] private List<Transform> mobSpawners;
     [SerializeField] private GameObject pistolAmmoPrefab;
-    [SerializeField] private GameObject riffleAmmoPrefab;
-    [SerializeField] private List<Transform> ammoSpawners;
+    [SerializeField] private GameObject rifleAmmoPrefab;
     [Header("Player")]
     [SerializeField] private GameObject player;
     [SerializeField] private Transform playerSpawner;
+    [Header("Level Sets")]
+    [SerializeField] private List<GameObject> levelSets;
+    [Header("Spawners")]
+    [SerializeField] private List<Transform> mobSpawners;
+    [SerializeField] private List<Transform> ammoSpawners;
     private int howManyEnemies;
+    private int currentLevel = 1;
     private bool areSpawned = false;
+    private bool ammoSpawned = false;
     void Start()
     {
+        AudioManager.Instance.BackgroundMusicManager(SceneManager.GetActiveScene().name);
         score.ZeroScore();
         NewLevel();
     }
@@ -29,6 +35,10 @@ public class GameManager : MonoBehaviour
         if(howManyEnemies == 0 && !areSpawned)
         {
             NewLevel();
+        }
+        if(areSpawned && !ammoSpawned)
+        {
+            StartCoroutine(SpawnAmmo());
         }
     }
 
@@ -46,7 +56,6 @@ public class GameManager : MonoBehaviour
         areSpawned = true;
         MovePlayer();
         GenerateLevel();
-        //GenerateNavMesh();
         SpawnEnemies();
         score.AddLevel();
         FindAnyObjectByType<UIManager>().ShowLevelText();
@@ -61,28 +70,38 @@ public class GameManager : MonoBehaviour
 
     private void SpawnEnemies()
     {
+        string checkName = "EnemySpawner LS" + currentLevel.ToString();
         for(int i = 0; i < mobSpawners.Count; i++)
         {
-            Instantiate(enemy, mobSpawners[i].position, mobSpawners[i].rotation);
-            howManyEnemies += 1;
+            if(mobSpawners[i].gameObject.name == checkName)
+            {
+                Instantiate(enemy, mobSpawners[i].position, mobSpawners[i].rotation);
+                howManyEnemies += 1;  
+            }
         }
     }
 
     private void GenerateLevel()
     {
-        
+        levelSets[currentLevel].SetActive(false);
+        currentLevel = UnityEngine.Random.Range(0, levelSets.Count);
+        Debug.Log("RANDOM == " + currentLevel);
+        levelSets[currentLevel].SetActive(true);
     }
 
     private IEnumerator SpawnAmmo()
     {
+        ammoSpawned = true;
         yield return new WaitForSeconds(10f);
-        for(int i = 0; i < ammoSpawners.Count; i++)
+        if(!IsAmmo(ammoSpawners[0].position))
         {
-            if(!IsAmmo(ammoSpawners[i].position))
-            {
-                Instantiate(enemy, mobSpawners[i].position, mobSpawners[i].rotation);
-            }
+            Instantiate(pistolAmmoPrefab, ammoSpawners[0].position, ammoSpawners[0].rotation);
         }
+        if(!IsAmmo(ammoSpawners[1].position) && score.GetLevel() > 5)
+        {
+            Instantiate(rifleAmmoPrefab, ammoSpawners[1].position, ammoSpawners[1].rotation);
+        }
+        ammoSpawned = false;
     }
 
     private bool IsAmmo(Vector3 position)
@@ -98,15 +117,10 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    /**
-    [!] MAŁA ADNOTACJA
-    FUNKCJA PONIŻEJ MOŻE POWODOWAĆ "DŁUGIE" ROZPOCZYNANIE SIĘ GRY
-    PONIEWAŻ GENERUJE SIATKĘ PO KTÓREJ BĘDĄ PORUSZAĆ SIĘ PRZECIWNICY
-    ZA KAŻDYM RAZEM, GDY GENEROWANY JEST NOWY UKŁAD POZIOMU
-    **/
-    private void GenerateNavMesh()
+    //GETTERY
+    public int GetHowManyEnemies()
     {
-        surface.BuildNavMesh();
+        return howManyEnemies;
     }
 
 }

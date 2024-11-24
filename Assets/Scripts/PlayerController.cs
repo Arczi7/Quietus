@@ -7,7 +7,7 @@ using UnityEngine.TextCore.Text;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float mouseSensitivity = 400f;
+    [SerializeField] private float mouseSensitivity = 200f;
     [SerializeField] private Camera playerCamera;
     [SerializeField] private Transform groundChecker;
     [SerializeField] private LayerMask groundLayer;
