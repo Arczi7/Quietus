@@ -13,6 +13,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Slider playerEffectsVolume;
     [Header("Credtis Panel")]
     [SerializeField] private GameObject credits;
+    [Header("Info Panel")]
+    [SerializeField] private GameObject info;
+    [SerializeField] private GameObject infoButton;
     private bool settingsOpen = false;
 
     void Start()
@@ -28,6 +31,7 @@ public class MainMenu : MonoBehaviour
     public void ToggleSettings(bool toggle)
     {
         settings.SetActive(toggle);
+        infoButton.SetActive(!toggle);
         backgroundMusicVolume.value = AudioManager.Instance.MusicVolume;
         effectsVolume.value = AudioManager.Instance.EffectsVolume;
         playerEffectsVolume.value = AudioManager.Instance.PlayerEffectsVolume;
@@ -60,6 +64,13 @@ public class MainMenu : MonoBehaviour
     public void ToggleCredits(bool toggle)
     {
         credits.SetActive(toggle);
+        infoButton.SetActive(!toggle);
+    }
+
+    public void ToggleInfo(bool toggle)
+    {
+        info.SetActive(toggle);
+        infoButton.SetActive(!toggle);
     }
 
     public void PlayButtonEffect()

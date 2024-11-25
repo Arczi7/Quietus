@@ -51,8 +51,9 @@ public class Enemy : MonoBehaviour
             float chance = UnityEngine.Random.Range(1, 10);
             if(chance >= 8)
             {
-                 Vector3 position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
-                Instantiate(healthPrefab, position , transform.rotation);
+                Vector3 position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+                GameObject health = Instantiate(healthPrefab, position , transform.rotation);
+                Destroy(health, 10f);
             }
             Destroy(gameObject);
             FindObjectOfType<PlayerStats>().AddScore(scoreValue);

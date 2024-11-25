@@ -98,7 +98,7 @@ public class AudioManager : MonoBehaviour
     public void PlayPlayerEffect(AudioClip effect)
     {
         playerEffectsSound.clip = effect;
-        playerEffectsSound.Play();        
+        playerEffectsSound.Play();      
     }
 
     public void StopMusic()

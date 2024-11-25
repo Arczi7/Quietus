@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
 {
     [Header("General Settings")]
     [SerializeField] private Score score;
-    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject enemy1Prefab;
+    [SerializeField] private GameObject enemy2Prefab;
+    [SerializeField] private GameObject enemy3Prefab;
     [SerializeField] private GameObject pistolAmmoPrefab;
     [SerializeField] private GameObject rifleAmmoPrefab;
     [Header("Player")]
@@ -73,9 +75,21 @@ public class GameManager : MonoBehaviour
         string checkName = "EnemySpawner LS" + currentLevel.ToString();
         for(int i = 0; i < mobSpawners.Count; i++)
         {
+            float random = UnityEngine.Random.Range(0, 10);
             if(mobSpawners[i].gameObject.name == checkName)
             {
-                Instantiate(enemy, mobSpawners[i].position, mobSpawners[i].rotation);
+                if((score.Level >= 5 && score.Level < 15 && random >= 7) || (score.Level >= 15 && random >= 4))
+                {
+                    Instantiate(enemy2Prefab, mobSpawners[i].position, mobSpawners[i].rotation);
+                }
+                else if(score.Level >= 15 && random <= 3)
+                {
+                    Instantiate(enemy3Prefab, mobSpawners[i].position, mobSpawners[i].rotation);
+                }
+                else
+                {
+                    Instantiate(enemy1Prefab, mobSpawners[i].position, mobSpawners[i].rotation);
+                }
                 howManyEnemies += 1;  
             }
         }
@@ -97,7 +111,7 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(pistolAmmoPrefab, ammoSpawners[0].position, ammoSpawners[0].rotation);
         }
-        if(!IsAmmo(ammoSpawners[1].position) && score.Level > 5)
+        if(!IsAmmo(ammoSpawners[1].position) && score.Level >= 5)
         {
             Instantiate(rifleAmmoPrefab, ammoSpawners[1].position, ammoSpawners[1].rotation);
         }
