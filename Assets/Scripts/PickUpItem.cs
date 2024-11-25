@@ -9,6 +9,7 @@ public class PickUpItem : MonoBehaviour
     private enum ItemType {health, pistolAmmo, rifleAmmo}
     [SerializeField] private int value;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private AudioClip pickUpSound;
     private Vector3 startPosition;
     void Start()
     {
@@ -28,16 +29,19 @@ public class PickUpItem : MonoBehaviour
         {
             if(type == ItemType.health)
             {
+                AudioManager.Instance.PlayEffect(pickUpSound);
                 other.GetComponent<PlayerStats>().HealPlayer(value);
                 Destroy(gameObject);
             }
             else if(type == ItemType.pistolAmmo)
             {
+                AudioManager.Instance.PlayEffect(pickUpSound);
                 other.GetComponent<GunManager>().Pistol.GetComponent<Gun>().AddAmmo(value);
                 Destroy(gameObject);
             }
             else if(type == ItemType.rifleAmmo)
             {
+                AudioManager.Instance.PlayEffect(pickUpSound);
                 other.GetComponent<GunManager>().Rifle.GetComponent<Gun>().AddAmmo(value);
                 Destroy(gameObject);
             }

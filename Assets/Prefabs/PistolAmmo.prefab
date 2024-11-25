@@ -49,6 +49,7 @@ MonoBehaviour:
   type: 1
   value: 10
   rotationSpeed: 20
+  pickUpSound: {fileID: 8300000, guid: 4137bc9ba9d100741a97922a84072dac, type: 3}
 --- !u!212 &5929015740038288690
 SpriteRenderer:
   m_ObjectHideFlags: 0

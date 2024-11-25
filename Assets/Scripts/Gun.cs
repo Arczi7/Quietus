@@ -72,11 +72,11 @@ public class Gun : MonoBehaviour
         Ray ray = playerCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         if(Physics.Raycast(ray, range, hitLayer + enemyLayer))
         {
-            FindAnyObjectByType<UIManager>().GetCrosshairBorder().color = Color.green;
+            FindAnyObjectByType<UIManager>().CrosshairBorder.color = Color.green;
         }
         else
         {
-            FindAnyObjectByType<UIManager>().GetCrosshairBorder().color = Color.red;
+            FindAnyObjectByType<UIManager>().CrosshairBorder.color = Color.red;
         }
     }
 
@@ -168,29 +168,28 @@ public class Gun : MonoBehaviour
         maxAmmo += value;
     }
 
-    //GETTERY
-    public int GetCurrentAmmo()
-    {
-        return currentAmmo;
-    }
-
-    public int GetMaxAmmo()
-    {
-        return maxAmmo;
-    }
-
-    public Sprite GetAmmoSprite()
-    {
-        return ammoSprite;
-    }
-
-    public bool IsReloading()
-    {
-        return reloading;
-    }
-
     public void ActiveShoot()
     {
         canShoot = true;
+    }
+
+    public int CurrentAmmo
+    {
+        get => currentAmmo;
+    }
+
+    public int MaxAmmo
+    {
+        get => maxAmmo;
+    }
+
+    public Sprite AmmoSprite
+    {
+        get => ammoSprite;
+    }
+
+    public bool Reloading
+    {
+        get => reloading;
     }
 }

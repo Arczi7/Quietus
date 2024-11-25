@@ -47,7 +47,6 @@ public class MainMenu : MonoBehaviour
 
     public void SettingsTestVolume(int value)
     {
-        Debug.Log(Resources.Load<AudioClip>("Sounds/PistolSound"));
         if(value == 0)
         {
             AudioManager.Instance.PlayEffect(Resources.Load<AudioClip>("Sounds/PistolSound"));
@@ -61,6 +60,11 @@ public class MainMenu : MonoBehaviour
     public void ToggleCredits(bool toggle)
     {
         credits.SetActive(toggle);
+    }
+
+    public void PlayButtonEffect()
+    {
+        AudioManager.Instance.PlayButtonEffect();
     }
 
     public void ExitGame()

@@ -29,24 +29,24 @@ public class UIManager : MonoBehaviour
 
     private void UIAmmo()
     {
-        currentAmmoText.text = activeGun.GetCurrentAmmo().ToString();
-        maxAmmoText.text = activeGun.GetMaxAmmo().ToString();
-        ammoSprite.sprite = activeGun.GetAmmoSprite();
+        currentAmmoText.text = activeGun.CurrentAmmo.ToString();
+        maxAmmoText.text = activeGun.MaxAmmo.ToString();
+        ammoSprite.sprite = activeGun.AmmoSprite;
     }
 
     private void UIHealth()
     {
-        healthText.text = playerStats.GetHealth().ToString();
+        healthText.text = playerStats.Health.ToString();
     }
 
     private void UIScore()
     {
-        scoreText.text = playerStats.GetScore().ToString();
+        scoreText.text = playerStats.Score.ToString();
     }
 
     private IEnumerator LevelText()
     {
-        newLevelText.text = "LEVEL " + playerStats.GetLevel().ToString();
+        newLevelText.text = "LEVEL " + playerStats.Level.ToString();
         newLevelText.gameObject.SetActive(true);
         yield return new WaitForSeconds(2f);
         newLevelText.gameObject.SetActive(false);
@@ -62,8 +62,8 @@ public class UIManager : MonoBehaviour
         StartCoroutine(LevelText());
     }
 
-    public Image GetCrosshairBorder()
+    public Image CrosshairBorder
     {
-        return crosshairBorder;
+        get => crosshairBorder;
     }
 }

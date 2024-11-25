@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -22,7 +21,6 @@ public class PauseMenu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape) && !pause)
         {
-            Debug.Log("Pause");
             PauseGame();
         }
         else if(Input.GetKeyDown(KeyCode.Escape) && pause)
@@ -72,7 +70,6 @@ public class PauseMenu : MonoBehaviour
 
     public void SettingsTestVolume(int value)
     {
-        Debug.Log(Resources.Load<AudioClip>("Sounds/PistolSound"));
         if(value == 0)
         {
             AudioManager.Instance.PlayEffect(Resources.Load<AudioClip>("Sounds/PistolSound"));

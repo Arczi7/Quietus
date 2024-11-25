@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
     [Header("Music and Effects")]
     [SerializeField] private AudioClip menuMusic;
     [SerializeField] private List<AudioClip> gameBackgroundMusicList;
+    [SerializeField] private AudioClip pressButton;
     private int backgroundMusicIndex = 0;
     
     void Awake()
@@ -49,14 +50,17 @@ public class AudioManager : MonoBehaviour
 
     private IEnumerator PlayMusicInGame()
     {
-        AudioClip currentClip = gameBackgroundMusicList[backgroundMusicIndex];
-        backgroundMusic.clip = currentClip;
-        backgroundMusic.Play();
-        yield return new WaitForSeconds(currentClip.length);
-        backgroundMusicIndex += 1;
-        if(backgroundMusicIndex > gameBackgroundMusicList.Count)
+        while(true)
         {
-            backgroundMusicIndex = 0;
+            AudioClip currentClip = gameBackgroundMusicList[backgroundMusicIndex];
+            backgroundMusic.clip = currentClip;
+            backgroundMusic.Play();
+            yield return new WaitForSeconds(currentClip.length);
+            backgroundMusicIndex += 1;
+            if(backgroundMusicIndex > gameBackgroundMusicList.Count - 1)
+            {
+                backgroundMusicIndex = 0;
+            }           
         }
     }
 
@@ -82,6 +86,12 @@ public class AudioManager : MonoBehaviour
     public void PlayEffect(AudioClip effect)
     {
         effectsSound.clip = effect;
+        effectsSound.Play();
+    }
+
+    public void PlayButtonEffect()
+    {
+        effectsSound.clip = pressButton;
         effectsSound.Play();
     }
 

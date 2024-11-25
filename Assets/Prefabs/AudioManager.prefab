@@ -171,7 +171,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -299,7 +299,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -440,3 +440,6 @@ MonoBehaviour:
   menuMusic: {fileID: 8300000, guid: f8405675790b9ac479f52573ef3416f3, type: 3}
   gameBackgroundMusicList:
   - {fileID: 8300000, guid: 22b28bb6c681adf4aa2e48e06502fc07, type: 3}
+  - {fileID: 8300000, guid: e462f4c993372ac47b960581dd41c202, type: 3}
+  - {fileID: 8300000, guid: 14f366d0026110e4da7c83f9fea6c76b, type: 3}
+  pressButton: {fileID: 8300000, guid: 292671e6ed52a414682c0e37bb0d60f1, type: 3}

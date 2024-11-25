@@ -16,14 +16,14 @@ public class GunManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1) && !pistol.activeSelf && !rifle.GetComponent<Gun>().IsReloading())
+        if(Input.GetKeyDown(KeyCode.Alpha1) && !pistol.activeSelf && !rifle.GetComponent<Gun>().Reloading)
         {
             rifle.SetActive(false);
             rifle.GetComponent<Gun>().ActiveShoot();
             pistol.SetActive(true);
             UIManager.SetGun(pistol);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha2) && !rifle.activeSelf && !pistol.GetComponent<Gun>().IsReloading())
+        else if(Input.GetKeyDown(KeyCode.Alpha2) && !rifle.activeSelf && !pistol.GetComponent<Gun>().Reloading)
         {
             pistol.SetActive(false);
             pistol.GetComponent<Gun>().ActiveShoot();

@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     [Header("Other Settings")]
     [SerializeField] private float damageTime;
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private GameObject healthPrefab;
 
     private Transform player;
     private Animator animator;
@@ -47,15 +48,16 @@ public class Enemy : MonoBehaviour
 
         if(health <= 0)
         {
+            float chance = UnityEngine.Random.Range(1, 10);
+            if(chance >= 8)
+            {
+                 Vector3 position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+                Instantiate(healthPrefab, position , transform.rotation);
+            }
             Destroy(gameObject);
             FindObjectOfType<PlayerStats>().AddScore(scoreValue);
             FindObjectOfType<GameManager>().RemoveEnemy();
         }
-    }
-
-    public void RemoveHealth(int damage)
-    {
-        health -= damage;
     }
 
     private void LookAtPlayer()
@@ -86,4 +88,16 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(damageTime);
         isAttacking = false;
     }
+
+    public void RemoveHealth(int damage)
+    {
+        health -= damage;
+        GetComponent<EnemyHealthBar>().UpdateHealthBar();
+    }
+
+    public int Health
+    {
+        get => health;
+    }
+
 }

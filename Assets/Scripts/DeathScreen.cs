@@ -20,8 +20,8 @@ public class DeathScreen : MonoBehaviour
     private void UIFinalScore()
     {
         deathScore.text = "SCORE: " + score.GetScore().ToString();
-        deathLevels.text = "LEVELS: " + score.GetLevel().ToString();
-        float finalScore = score.GetScore() * score.GetLevel();
+        deathLevels.text = "LEVELS: " + score.Level.ToString();
+        float finalScore = score.GetScore() * score.Level;
         deathFinalScore.text = "FINAL SCORE: " + finalScore.ToString();
     }
 

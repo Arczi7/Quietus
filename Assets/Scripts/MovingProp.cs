@@ -16,7 +16,7 @@ public class MovingProp : MonoBehaviour
 
     void Update()
     {
-        if(gameManager.GetHowManyEnemies() == 0)
+        if(gameManager.HowManyEnemies == 0)
         {
             transform.position = position;
             transform.rotation = rotation;

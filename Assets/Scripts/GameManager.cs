@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(pistolAmmoPrefab, ammoSpawners[0].position, ammoSpawners[0].rotation);
         }
-        if(!IsAmmo(ammoSpawners[1].position) && score.GetLevel() > 5)
+        if(!IsAmmo(ammoSpawners[1].position) && score.Level > 5)
         {
             Instantiate(rifleAmmoPrefab, ammoSpawners[1].position, ammoSpawners[1].rotation);
         }
@@ -117,10 +117,9 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    //GETTERY
-    public int GetHowManyEnemies()
+    public int HowManyEnemies
     {
-        return howManyEnemies;
+        get => howManyEnemies;
     }
 
 }

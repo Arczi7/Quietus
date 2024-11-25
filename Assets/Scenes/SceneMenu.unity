@@ -2470,6 +2470,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 395164792}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PlayButtonEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &543683931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4228,6 +4240,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 395164792}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PlayButtonEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1029248863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4646,14 +4670,19 @@ MonoBehaviour:
       m_Calls: []
   m_text: "<align=center><b><size=36>CREDITS</size></b></align>\r\n<align=center><size=28><b>Team</b></size></align>\r\n<color=#FFD700>Game
     Designer: </color><b>Piotr Arci\u0144ski</b>\r\n<color=#FFD700>Programmer: </color><b>Piotr
-    Arci\u0144ski</b>\r\n\r\n<align=center><size=28><b>Assets Used</b></size></align>\r\n<color=#ffa31a>Background
+    Arci\u0144ski</b>\r\n\r\n<align=center><size=28><b>ASSETS USED</b></size></align>\r\n<color=#ffa31a>Background
     Images:</color> \r\n<b>Modern City Backgrounds Pixel Art</b> (Free License) 
     \r\n<link=\"https://free-game-assets.itch.io/free-city-backgrounds-pixel-art
     \">https://free-game-assets.itch.io/free-city-backgrounds-pixel-art </link>\r\n\r\n<color=#ffa31a>Ammo
     Icons:</color>\r\n<b>2D Health&Ammo Pickups</b> (Free License)  \r\n<link=\"https://fightswithbears.itch.io/2d-health-and-ammo-pickups\">https://fightswithbears.itch.io/2d-health-and-ammo-pickups</link>\r\n\r\n<color=#ffa31a>Sounds:</color>\r\n<b>Snake\u2019s
-    Authentic Gun Sounds</b> (Free License)  \r\n<link=\"https://f8studios.itch.io/snakes-authentic-gun-sounds\">https://f8studios.itch.io/snakes-authentic-gun-sounds</link>\r\n\r\n<b>Super
+    Authentic Gun Sounds</b> (Free License)  \r\n<link=\"https://f8studios.itch.io/snakes-authentic-gun-sounds\">https://f8studios.itch.io/snakes-authentic-gun-sounds</link>\r\n\r\n<b>Press
+    Click Free by Makotohiramatsu</b>\r\nThis work is licensed under CC BY 4.0\r\n<link=\"https://makotohiramatsu.itch.io/press-click-free\">https://makotohiramatsu.itch.io/press-click-free</link>\r\n\r\n<b>Super
     Dialogue Audio Pack by Dillon Becker </b>\r\nThis work is licensed under CC BY
-    4.0\r\n<link=\"https://dillonbecker.itch.io/sdap\">https://dillonbecker.itch.io/sdap</link>\r\n\r\n<color=#ffa31a>Buttons
+    4.0\r\n<link=\"https://dillonbecker.itch.io/sdap\">https://dillonbecker.itch.io/sdap</link>\r\n\r\n<b>RPG
+    Essentials SFX</b> (Free License)\r\n<link=\"https://leohpaz.itch.io/rpg-essentials-sfx-free\">https://leohpaz.itch.io/rpg-essentials-sfx-free</link>\r\n\r\n<color=#ffa31a>Background
+    Music:</color>\r\n<b>Eternity Metal SciFi Music Pack by DavidKBD</b>\r\nThis
+    work is licensed under CC BY 4.0\r\n<link=\"https://davidkbd.itch.io/eternity-metal-scfi-music-pack\">
+    https://davidkbd.itch.io/eternity-metal-scfi-music-pack</link>\r\n\r\n<color=#ffa31a>Buttons
     Sprites:</color>\r\n<b>Robin \u2013 wooden game GUI asset</b> (Free License) 
     \r\n<link=\"https://prinbles.itch.io/robin\">https://prinbles.itch.io/robin</link>\r\n\r\n<color=#ffa31a>Guns
     Icons:</color>\r\n<b>Free Guns Pixel Art</b> (Free License)  \r\n<link=\"https://arlantr.itch.io/free-guns-pixelart\">https://arlantr.itch.io/free-guns-pixelart</link>\r\n\r\n<color=#ffa31a>Title
@@ -4666,7 +4695,7 @@ MonoBehaviour:
     Models:</color>\r\n<b>RPG Monster Duo PBR Polyart</b> (Unity Asset Store - Free) 
     \r\n<link=\"https://assetstore.unity.com/packages/3d/characters/creatures/rpg-monster-duo-pbr-polyart-157762\">https://assetstore.unity.com/packages/3d/characters/creatures/rpg-monster-duo-pbr-polyart-157762</link>\r\n\r\n<color=#ffa31a>Shoot
     Particles & Effects:</color>\r\n<b>Legacy Particle Pack</b> (Unity Asset Store
-    - Free)  \r\n<link=\"https://assetstore.unity.com/packages/vfx/particles/legacy-particle-pack-73777\">https://assetstore.unity.com/packages/vfx/particles/legacy-particle-pack-73777</link>\r\n\r\n\r\n\r\n\r\n"
+    - Free)  \r\n<link=\"https://assetstore.unity.com/packages/vfx/particles/legacy-particle-pack-73777\">https://assetstore.unity.com/packages/vfx/particles/legacy-particle-pack-73777</link>\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5860,6 +5889,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 395164792}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PlayButtonEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1448745480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6022,6 +6063,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: ToggleCredits
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 395164792}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PlayButtonEffect
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7363,6 +7416,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 395164792}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PlayButtonEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1816489193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8091,6 +8156,18 @@ MonoBehaviour:
       - m_Target: {fileID: 395164792}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 395164792}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PlayButtonEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

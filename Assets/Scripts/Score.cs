@@ -29,8 +29,8 @@ public class Score : ScriptableObject
         return score;
     }
 
-    public float GetLevel()
+    public float Level
     {
-        return level;
+        get => level;
     }
 }

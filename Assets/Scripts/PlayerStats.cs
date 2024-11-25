@@ -48,18 +48,18 @@ public class PlayerStats : MonoBehaviour
     }
 
     //--GETTERY--//
-    public float GetHealth()
+    public float Health
     {
-        return health;
+       get => health;
     }
 
-    public float GetScore()
+    public float Score
     {
-        return score.GetScore();
+        get => score.GetScore();
     }
 
-    public float GetLevel()
+    public float Level
     {
-        return score.GetLevel();
+        get => score.Level;
     }
 }
